@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+
+/* full-card animated gradient */
+@keyframes rainbow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.rainbow-border {
+    background: linear-gradient(90deg, #F50A23, #F56321, #F5A620, #F5FF1E, #F50A23);
+    background-size: 200% 200%;
+    animation: rainbow 6s ease infinite;
+}
+
+/* swirling halo */
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.swirl-halo {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    background: conic-gradient(#F50A23, #F56321, #F5A620, #F5FF1E, #F50A23);
+    border-radius: 9999px;
+    animation: spin 4s linear infinite;
+}
