@@ -8,7 +8,6 @@ const Cart = () => {
 
           {/* iPhone Card */}
           <div className="bg-white rounded-xl p-6 mb-6">
-            <p className="text-sm text-gray-500 mb-2">New Line 1</p>
             <div className="flex gap-4">
               <img
                 src="./../../src/assets/iphone14.jpeg"

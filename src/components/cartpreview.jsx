@@ -57,7 +57,7 @@ const CartPreview = () => {
                                             <li key={idx}>{item}</li>
                                         ))}
                                     </ul>
-                                    <p className="text-sm text-blue-700 underline cursor-pointer mb-2">Review details</p>
+                                    <p className="text-sm text-blue-700 mb-2">Ask me for more details</p>
                                 </div>
 
                                 {/* Bottom Price Section */}
@@ -87,8 +87,6 @@ const CartPreview = () => {
                             className="w-20 h-auto rounded-md object-cover"
                         />
                         <div>
-                            <p className="text-sm text-gray-500 mb-1">New Line 1</p>
-                            <p className="text-sm text-gray-700 mb-1">Ships by Mon, Jun 3</p>
                             <p className="font-semibold">Apple iPhone 16 Pro Max</p>
                             <p className="text-sm text-gray-500">512 GB, Titanium</p>
                             <p className="text-lg font-bold mt-1">$0.00/mo</p>

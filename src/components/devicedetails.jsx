@@ -1,8 +1,16 @@
 
 
 const DeviceDetails = () => {
+
+  const colors = [
+    { name: 'Natural titanium', bg: 'bg-[#c3bcb3]' },
+    { name: 'Black titanium', bg: 'bg-[#2f2f2f]' },
+    { name: 'Desert titanium', bg: 'bg-[#c9ab97]' },
+    { name: 'White titanium', bg: 'bg-[#f4f3ef]' },
+  ];
+
   return (
-       <div className="max-w-5xl mx-auto bg-white rounded-2xl p-6 flex flex-col md:flex-row items-center md:items-start gap-8">
+    <div className="max-w-5xl mx-auto bg-white rounded-2xl p-6 flex flex-col md:flex-row items-center md:items-start gap-8">
       {/* Image Section */}
       <div className="flex-shrink-0">
         <img
@@ -20,18 +28,23 @@ const DeviceDetails = () => {
 
         {/* Color */}
         <div className="mb-6">
-          <label className="flex items-center gap-2">
-            <input type="radio" name="color" checked readOnly />
-            <span className="text-sm font-medium">Color</span>
-            <span className="inline-block w-4 h-4 rounded-full bg-gray-400"></span>
-            <span className="text-sm text-gray-700">Natural titanium</span>
-          </label>
+          <div className="flex flex-col items-left gap-2">
+            <div className="text-sm font-medium">Color</div>
+            <div className="grid grid-cols-2 gap-4 max-w-xs">
+              {colors.map((color, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <div className={`w-5 h-5 rounded ${color.bg}`} />
+                  <span className="text-sm text-gray-800">{color.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Storage */}
         <div className="mb-6">
           <label className="flex items-center gap-2 mb-2">
-            <input type="radio" name="storage" checked readOnly />
+            {/* <input type="radio" name="storage" checked readOnly /> */}
             <span className="text-sm font-medium">Storage</span>
           </label>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -47,12 +60,12 @@ const DeviceDetails = () => {
         </div>
 
         {/* Accessories */}
-        <div>
+        {/* <div>
           <label className="flex items-center gap-2">
             <input type="radio" name="accessories" />
             <span className="text-sm font-medium">Accessories</span>
           </label>
-        </div>
+        </div> */}
       </div>
     </div>
   );

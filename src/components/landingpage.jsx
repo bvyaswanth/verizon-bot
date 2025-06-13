@@ -4,7 +4,6 @@ import BotModal from "./botmodal";
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Bot from './bot';
 import BotAiResponse from './botairesponse';
-import RecommendedDevices from './RecommendedDevices';
 import PrimaryOfferScreen from './primaryofferscreen';
 import DeviceDetails from "./devicedetails";
 import DeviceOptions from "./deviceoptions";
@@ -92,15 +91,6 @@ const LandingPage = () => {
                             element={<PrimaryOfferScreen />}
                         />
                         <Route
-                            path="recommended-devices"
-                            element={
-                                <RecommendedDevices
-                                    isPaused={isPaused}
-                                    setIsPaused={setIsPaused}
-                                />
-                            }
-                        />
-                        <Route
                             path="device-options"
                             element={<Outlet />}
                         >
@@ -112,10 +102,10 @@ const LandingPage = () => {
                                 path="device-details"
                                 element={<DeviceDetails />}
                             />
-                            <Route
+                            {/* <Route
                                 path="details-selection"
                                 element={<DetailsSelection />}
-                            />
+                            /> */}
                         </Route>
                         <Route
                             path="cart-details"

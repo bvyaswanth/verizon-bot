@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
-import RecommendedDevices from './RecommendedDevices';
 import { User } from 'lucide-react';
 
 const BotAiResponse = ({ isPaused, setIsPaused }) => {
