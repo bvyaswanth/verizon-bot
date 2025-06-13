@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BotModal from "./botmodal";
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Bot from './bot';
@@ -11,12 +11,13 @@ import DeviceOptions from "./deviceoptions";
 import DetailsSelection from "./detailsselection";
 import CartPreview from "./cartpreview";
 import Cart from "./cart";
+import { useLocation } from 'react-router-dom'
 
 const NavButtons = ({ text, setShowModal }) => {
     // const navigate = useNavigate();
 
     const navigateToBot = () => {
-        setShowModal(true)
+        //setShowModal(true)
     };
 
     return (
@@ -32,8 +33,19 @@ const NavButtons = ({ text, setShowModal }) => {
 
 const LandingPage = () => {
 
-    const [showModal, setShowModal] = useState(true);
     const [isPaused, setIsPaused] = useState(false);
+    const location = useLocation();
+    const landingRoute = Boolean(["", "/"].includes(location.pathname))
+    const modalAppearTime = 2.5;
+    const [showModal, setShowModal] = useState(!landingRoute);
+
+    useEffect(()=>{
+        if(landingRoute){
+            setTimeout(()=>{
+                setShowModal(true)
+            }, modalAppearTime*1000)
+        }
+    }, [])
 
     return (
         <div>

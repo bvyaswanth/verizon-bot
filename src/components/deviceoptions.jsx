@@ -37,7 +37,7 @@ const DeviceOptions = ({ isPaused, setIsPaused }) =>{
     return (
         <div className="space-y-6">
             <h2 className="text-2xl font-medium text-gray-900">
-                Recommended devices
+                Device Options
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {devices.map((d) => (

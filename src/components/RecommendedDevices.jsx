@@ -2,9 +2,9 @@ import React from 'react';
 import { User } from 'lucide-react';
 
 
-import iPhone16ProImg from '../assets/iphone16pro.png';
-import iPhone16PlusImg from '../assets/iphone16plus.png';
-import GalaxyS24FEImg from '../assets/galaxy-s24-fe.png';
+import iPhone16ProImg from '../assets/iphone14.jpeg';
+import iPhone16PlusImg from '../assets/iphone14.jpeg';
+import GalaxyS24FEImg from '../assets/iphone14.jpeg';
 
 const devices = [
     {
@@ -43,45 +43,44 @@ export default function RecommendedDevices({ isPaused, setIsPaused }) {
             <h2 className="text-2xl font-medium text-gray-900">
                 Recommended devices
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {devices.map((d) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {devices.map((d, idx) => (
                     <div
                         key={d.id}
-                        className="relative bg-white rounded-lg shadow p-6 overflow-hidden"
+                        className={`relative bg-white rounded-lg shadow p-2 h-[100%] overflow-hidden ${idx===0 ? "lg:col-span-2 ": ""}`}
                     >
                         {d.recommended && (
                             <span className="absolute top-4 left-4 bg-gray-200 text-gray-900 text-sm font-medium px-2 py-1 rounded">
                                 Recommended
                             </span>
                         )}
-                        <img
-                            src={d.image}
-                            alt={d.title}
-                            className="mx-auto mb-4 h-48 object-contain"
-                        />
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                            {d.title}
-                        </h3>
-                        <div className="flex items-center space-x-2 mb-4">
-                            {d.colors.map((c, i) => (
-                                <span
-                                    key={i}
-                                    className="w-4 h-4 rounded-full border"
-                                    style={{ backgroundColor: c }}
+                        <div className={`h-[100%] items-center flex ${idx===0 ? "flex-row" : "flex-col"} `}>
+                            <div className={`${idx===0 ? "" : "h-[50%]"}`}>
+                                <img
+                                    src={d.image}
+                                    alt={d.title}
+                                    width={idx===0 ? "auto": 100}
+                                    className="mx-auto mb-4 h-48 object-contain"
                                 />
-                            ))}
-                        </div>
-                        <p className="text-gray-500 text-sm">Offer price</p>
-                        <p className="text-2xl font-bold text-gray-900">
-                            {d.price}
-                        </p>
-                        <p className="text-gray-500 text-sm mt-1">{d.credit}</p>
-                        <div className="mt-4">
-                            <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-                                <div
-                                    className="h-full bg-gray-800"
-                                    style={{ width: d.fill }}
-                                />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                    {d.title}
+                                </h3>
+                                <div className="flex items-center space-x-2 mb-4">
+                                    {d.colors.map((c, i) => (
+                                        <span
+                                            key={i}
+                                            className="w-4 h-4 rounded-full border"
+                                            style={{ backgroundColor: c }}
+                                        />
+                                    ))}
+                                </div>
+                                <p className="text-gray-500 text-sm">Offer price</p>
+                                <p className="text-2xl font-bold text-gray-900">
+                                    {d.price}
+                                </p>
+                                <p className="text-gray-500 text-sm mt-1">{d.credit}</p>
                             </div>
                         </div>
                     </div>

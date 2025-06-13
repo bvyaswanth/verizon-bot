@@ -4,7 +4,7 @@ const PrimaryOfferScreen = () => {
     return (
         <div className="flex flex-row gap-2">
             {
-                [1, 2, 3, 4].map(()=>(
+                [1, 2, 3 ].map(()=>(
 
                     <div className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-red-600 text-white">
                         <div className="p-6">

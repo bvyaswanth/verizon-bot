@@ -2,7 +2,7 @@
 
 const DeviceDetails = () => {
   return (
-       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-6 flex flex-col md:flex-row items-center md:items-start gap-8">
+       <div className="max-w-5xl mx-auto bg-white rounded-2xl p-6 flex flex-col md:flex-row items-center md:items-start gap-8">
       {/* Image Section */}
       <div className="flex-shrink-0">
         <img
