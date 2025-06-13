@@ -1,13 +1,13 @@
 const Cart = () => {
   return (
-    <div className="bg-gray-100 p-3">
+    <div className="p-3">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Cart */}
         <div className="lg:col-span-8">
           <h2 className="text-xl font-semibold mb-4">Your cart</h2>
 
           {/* iPhone Card */}
-          <div className="bg-white rounded-xl p-6 mb-6 shadow-sm">
+          <div className="bg-white rounded-xl p-6 mb-6">
             <p className="text-sm text-gray-500 mb-2">New Line 1</p>
             <div className="flex gap-4">
               <img

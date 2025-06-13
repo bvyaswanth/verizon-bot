@@ -2,10 +2,10 @@ import { User } from 'lucide-react';
 
 const Bot = ({ isPaused, setIsPaused }) => {
     return (
-        <main className="flex-1 bg-gray-100">
+        <main className="flex-1">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className={isPaused ? "relative p-2 rounded-[28px] rainbow-border" : ""}>
-                    <div className="bg-white rounded-lg shadow-sm min-h-96 flex flex-col items-center justify-center relative overflow-hidden">
+                    <div className="bg-white rounded-lg min-h-96 flex flex-col items-center justify-center relative overflow-hidden">
 
                         <h1 className="text-3xl font-light text-gray-900 mb-12">Orion</h1>
 
@@ -23,7 +23,7 @@ const Bot = ({ isPaused, setIsPaused }) => {
                                 : "bg-white text-gray-900 border-gray-300 hover:bg-gray-50"
                                 }`}
                         >
-                            {isPaused ? "Resume" : "Talk to Orion"}
+                            {isPaused ? "Pause" : `Let's Talk`}
                         </button>
                     </div>
                 </div>

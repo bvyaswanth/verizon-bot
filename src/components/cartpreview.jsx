@@ -35,15 +35,15 @@ const plans = [
 
 const CartPreview = () => {
     return (
-        <div className="p-3 bg-gray-100 min-h-screen">
+        <div>
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
 
                 {/* Left - Plans */}
-                <div className="lg:col-span-8 bg-white p-6 rounded-xl shadow-md">
+                <div className="lg:col-span-8 bg-white p-4 rounded-xl">
                     <h2 className="text-2xl font-semibold mb-6">Available plans</h2>
                     <div className="grid md:grid-cols-3 gap-2">
                         {plans.map((plan) => (
-                            <div key={plan.title} className="relative bg-[#f6f1eb] rounded-lg p-5 border shadow-sm flex flex-col justify-between h-full">
+                            <div key={plan.title} className="relative bg-[#f6f1eb] rounded-lg p-2 border shadow-sm flex flex-col justify-between h-full">
                                 {/* 5G Label in Top Right */}
                                 <div className="absolute top-3 right-4 text-xs font-bold text-black bg-white px-2 py-0.5 rounded shadow-sm">
                                     5G
@@ -75,7 +75,7 @@ const CartPreview = () => {
                 </div>
 
                 {/* Right - Cart */}
-                <div className="lg:col-span-4 bg-white p-6 rounded-xl shadow-md">
+                <div className="lg:col-span-4 bg-white p-6 rounded-xl">
 
                     <h2 className="text-xl font-semibold mb-4">Your cart</h2>
 

@@ -1,12 +1,23 @@
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import BotModal from "./botmodal";
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import Bot from './bot';
+import BotAiResponse from './botairesponse';
+import RecommendedDevices from './RecommendedDevices';
+import PrimaryOfferScreen from './primaryofferscreen';
+import DeviceDetails from "./devicedetails";
+import DeviceOptions from "./deviceoptions";
+import DetailsSelection from "./detailsselection";
+import CartPreview from "./cartpreview";
+import Cart from "./cart";
+import { useLocation } from 'react-router-dom'
 
-const NavButtons = ({ text }) => {
-    const navigate = useNavigate();
+const NavButtons = ({ text, setShowModal }) => {
+    // const navigate = useNavigate();
 
     const navigateToBot = () => {
-        navigate("/bot");
+        //setShowModal(true)
     };
 
     return (
@@ -22,7 +33,19 @@ const NavButtons = ({ text }) => {
 
 const LandingPage = () => {
 
-    const [showModal, setShowModal] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const location = useLocation();
+    const landingRoute = Boolean(["", "/"].includes(location.pathname))
+    const modalAppearTime = 2.5;
+    const [showModal, setShowModal] = useState(!landingRoute);
+
+    useEffect(()=>{
+        if(landingRoute){
+            setTimeout(()=>{
+                setShowModal(true)
+            }, modalAppearTime*1000)
+        }
+    }, [])
 
     return (
         <div>
@@ -32,12 +55,12 @@ const LandingPage = () => {
             <main className="flex-1">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
                     <div className="flex flex-row items-center gap-2">
-                        <NavButtons text="Switch to Verizon" />
-                        <NavButtons text="Phones" />
-                        <NavButtons text="Mobile Plans" />
-                        <NavButtons text="Bring a Device" />
-                        <NavButtons text="Home Internet" />
-                        <NavButtons text="Deals" />
+                        <NavButtons setShowModal={setShowModal} text="Switch to Verizon"/>
+                        <NavButtons setShowModal={setShowModal} text="Phones" />
+                        <NavButtons setShowModal={setShowModal} text="Mobile Plans" />
+                        <NavButtons setShowModal={setShowModal} text="Bring a Device" />
+                        <NavButtons setShowModal={setShowModal} text="Home Internet" />
+                        <NavButtons setShowModal={setShowModal} text="Deals" />
                     </div>
                     <div className="flex flex-row justify-around gap-5">
                         <div style={{ paddingTop: 10 }}>
@@ -50,7 +73,65 @@ const LandingPage = () => {
                 </div>
             </main>
             <BotModal isOpen={showModal} onClose={() => setShowModal(false)}>
-                TEST
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Bot isPaused={isPaused} setIsPaused={setIsPaused} />}
+                    />
+                    <Route
+                        path="/offers"
+                        element={
+                            <BotAiResponse
+                                isPaused={isPaused}
+                                setIsPaused={setIsPaused}
+                            />
+                        }
+                    >
+                        <Route
+                            index
+                            element={<PrimaryOfferScreen />}
+                        />
+                        <Route
+                            path="recommended-devices"
+                            element={
+                                <RecommendedDevices
+                                    isPaused={isPaused}
+                                    setIsPaused={setIsPaused}
+                                />
+                            }
+                        />
+                        <Route
+                            path="device-options"
+                            element={<Outlet />}
+                        >
+                            <Route
+                                index
+                                element={<DeviceOptions />}
+                            />
+                            <Route
+                                path="device-details"
+                                element={<DeviceDetails />}
+                            />
+                            <Route
+                                path="details-selection"
+                                element={<DetailsSelection />}
+                            />
+                        </Route>
+                        <Route
+                            path="cart-details"
+                            element={<Outlet />}
+                        >
+                            <Route
+                                index
+                                element={<CartPreview />}
+                            />
+                            <Route
+                                path="cart"
+                                element={<Cart />}
+                            />
+                        </Route>
+                    </Route>
+                </Routes>
             </BotModal>
         </div>
     )
